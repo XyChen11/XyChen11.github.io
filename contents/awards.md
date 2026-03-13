@@ -1,12 +1,14 @@
+- National Second Prize, Mathematical Contest in Modeling (MCM), USA, Jan 2025
+  *Problem A: Analysis of Stone Step Wear*
+- “Best Runner-up Software Project”, Advanced Project Skills Enhancement Programme, University of Glasgow, UK, 2025
+  *AI-driven antenna design project under the supervision of Prof. Bo Liu during exchange studies*
+- University-Level Outstanding Completion, Undergraduate Innovation Training Program, UESTC
+  *Project: Long-Term Airborne Trajectory Prediction Based on Large Language Models*
+  [GitHub Repository](https://github.com/XyChen11/GPThash)
+- Outstanding Completion Award, Freshman Extracurricular Innovation Practice Program, University of Electronic Science and Technology of China (UESTC), Dec 2024
+  *Project: Gesture-Controlled Smart Car*
+- National Third Prize, National English Competition for College Students, China, Apr 2024
 
-- Outstanding Graduate Award (CUMT), 2025.
-
-- National Scholarship for Graduate Students (Ministry of Education, China), 2024.
-
-- First-Prize Graduate Academic Scholarship (CUMT), 2023 & 2024.
-
-- Outstanding Undergraduate Thesis Award (Jiangsu, China), 2022.
-
-- First-Prize Corporate Scholarship (CUMT), 2020.
-
-- First-Prize Undergraduate Academic Scholarship (CUMT), 2019.
+* **First-Class Outstanding Student Scholarship, University of Electronic Science and Technology of China (UESTC)**
+* **Academic Excellence Scholarship, Glasgow College, UESTC**
+* **Comprehensive Quality Development Scholarship, Glasgow College, UESTC**
