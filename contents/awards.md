@@ -1,4 +1,4 @@
-- National Second Prize, Mathematical Contest in Modeling (MCM), USA, Jan 2025
+- Finalist Prize, Mathematical Contest in Modeling (MCM), USA, Jan 2025
   *Problem A: Analysis of Stone Step Wear*
 - “Best Runner-up Software Project”, Advanced Project Skills Enhancement Programme, University of Glasgow, UK, 2025
   *AI-driven antenna design project under the supervision of Prof. Bo Liu during exchange studies*
