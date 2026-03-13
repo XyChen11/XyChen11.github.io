@@ -8,7 +8,6 @@
 - Outstanding Completion Award, Freshman Extracurricular Innovation Practice Program, University of Electronic Science and Technology of China (UESTC), Dec 2024
   *Project: Gesture-Controlled Smart Car*
 - National Third Prize, National English Competition for College Students, China, Apr 2024
-
-* **First-Class Outstanding Student Scholarship, University of Electronic Science and Technology of China (UESTC)**
-* **Academic Excellence Scholarship, Glasgow College, UESTC**
-* **Comprehensive Quality Development Scholarship, Glasgow College, UESTC**
+- First-Class Outstanding Student Scholarship, University of Electronic Science and Technology of China (UESTC), Dec 2024
+- The Second Grade Academic Scholarship, Glasgow College, UESTC, Dec 2024
+- Art and Sport First-class Scholarship, Glasgow College, UESTC, Dec 2024
