@@ -109,23 +109,23 @@ section .main-body{
     }
 }
 
-#teaching .tm-grid {
+section .tm-grid {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 1.5rem;
     margin-top: 0.8rem;
 }
 
-#teaching .tm-card {
+section .tm-card {
     background: #eaf3ff;
     border: 1px solid #c8ddff;
-    border-left: 4px solid #4b82e3;
+    border-left: 4px solid #719be4;
     border-radius: 0.5rem;
     padding: 1.2rem 1.4rem;
     box-shadow: 0 4px 14px rgba(39, 86, 172, 0.08);
 }
 
-#teaching .tm-card-header {
+section .tm-card-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -133,16 +133,16 @@ section .main-body{
     margin-bottom: 0.7rem;
 }
 
-#teaching .tm-course-code {
+section .tm-course-code {
     margin: 0;
-    font-size: 1.75rem;
+    font-size: 1.45rem;
     font-weight: 700;
     color: #111;
-    line-height: 1.25;
+    line-height: 1.4;
 }
 
-#teaching .tm-role {
-    font-size: 0.95rem;
+section .tm-role {
+    font-size: 1.2rem;
     font-weight: 600;
     color: #2f5fbe;
     background: #dce9ff;
@@ -152,25 +152,25 @@ section .main-body{
     line-height: 1.6;
 }
 
-#teaching .tm-course-name {
+section .tm-course-name {
     margin: 0.2rem 0 0.4rem;
-    font-size: 1.95rem;
+    font-size: 1.5rem;
     font-weight: 600;
-    line-height: 1.25;
+    line-height: 1.45;
     color: #1a1a1a;
 }
 
-#teaching .tm-course-desc {
+section .tm-course-desc {
     margin: 0;
     font-size: 1.3rem;
     line-height: 1.65;
     color: #303030;
 }
 
-#teaching .tm-term {
+section .tm-term {
     display: inline-block;
     margin-top: 0.95rem;
-    font-size: 1rem;
+    font-size: 1.2rem;
     font-weight: 600;
     color: #2c59b4;
     background: #d7e6ff;
@@ -180,16 +180,16 @@ section .main-body{
 }
 
 @media screen and (max-width: 991px) {
-    #teaching .tm-grid {
+    section .tm-grid {
         grid-template-columns: 1fr;
     }
 
-    #teaching .tm-course-code {
-        font-size: 1.45rem;
+    section .tm-course-code {
+        font-size: 1.35rem;
     }
 
-    #teaching .tm-course-name {
-        font-size: 1.55rem;
+    section .tm-course-name {
+        font-size: 1.4rem;
     }
 }
 

@@ -12,10 +12,10 @@ Add a new content section to this static academic site so it renders from Markdo
 This site loads section content files from contents/ and injects rendered HTML through static/js/scripts.js.
 
 The loader supports two content formats for each section name X:
-- Preferred for complex layouts: contents/X.html
-- Fallback for text-first sections: contents/X.md
+- Preferred for text-first sections: contents/X.md
+- Optional for complex layouts: contents/X.html
 
-The loader tries X.html first, then falls back to X.md.
+The loader tries X.md first, then falls back to X.html.
 
 Current loading list example:
 - home
@@ -38,6 +38,15 @@ For each section name X:
 - For text-first content, add contents/<section-id>.md.
 - For custom card layouts, timelines, or richer HTML structures, add contents/<section-id>.html.
 - Keep the filename exactly aligned with the section id.
+
+2.1 Reusable card-block pattern (recommended)
+- Use semantic wrappers like .tm-grid and .tm-card in contents/<section-id>.html.
+- Scope styles with section .tm-... in static/css/main.css for easy reuse.
+- If multiple modules may use similar class names later, add a namespace class on the section, for example: .module-teaching .tm-card.
+- Keep typography aligned with the site base:
+  - Body text aligns with section .main-body (current base is 1.3rem).
+  - Small labels should not be noticeably smaller than surrounding body copy.
+  - Keep line-height readable and close to the global body rhythm.
 
 3. Add section block in index.html
 - Add a section with id=<section-id>.
@@ -70,12 +79,12 @@ Template:
 5. Register section in static/js/scripts.js
 - Add <section-id> to section_names array.
 - Keep missing-target guard so commented sections do not break loading.
-- The loader should try .html before .md so complex sections can use raw HTML safely.
+- The loader should try .md before .html to avoid environment-specific markdown/template injection issues.
 
 Template:
 ```javascript
 const section_names = ['home', 'publications', '<section-id>', 'awards'];
-const content_extensions = ['html', 'md'];
+const content_extensions = ['md', 'html'];
 
 function fetchSectionContent(name) {
   const tryExtension = (index) => {
@@ -130,6 +139,8 @@ section_names.forEach((name) => {
 - Section block commented out in HTML while still listed in JS.
 - Forgetting to add section id to section_names array.
 - Putting complex raw HTML into a .md file when it should be a .html file.
+- Reusing generic class names without scoping, causing cross-section style bleed.
+- Setting card label fonts too small compared with section body text.
 
 ## Quick Add Recipe
 1. Add contents/<section-id>.md for simple content, or contents/<section-id>.html for custom layouts.
