@@ -3,6 +3,32 @@
 const content_dir = 'contents/'
 const config_file = 'config.yml'
 const section_names = ['home', 'publications', 'researchexperience', 'awards', 'teachingmentoring']
+const content_extensions = ['html', 'md']
+
+
+function fetchSectionContent(name) {
+    const tryExtension = (index) => {
+        if (index >= content_extensions.length) {
+            throw new Error('Unable to load content for section: ' + name);
+        }
+
+        const extension = content_extensions[index];
+        return fetch(content_dir + name + '.' + extension)
+            .then(response => {
+                if (!response.ok) {
+                    if (response.status === 404) {
+                        return tryExtension(index + 1);
+                    }
+
+                    throw new Error('Failed to load ' + name + '.' + extension + ': ' + response.status);
+                }
+
+                return response.text().then(content => ({ extension, content }));
+            });
+    };
+
+    return tryExtension(0);
+}
 
 
 window.addEventListener('DOMContentLoaded', event => {
@@ -55,10 +81,9 @@ window.addEventListener('DOMContentLoaded', event => {
             return;
         }
 
-        fetch(content_dir + name + '.md')
-            .then(response => response.text())
-            .then(markdown => {
-                const html = marked.parse(markdown);
+        fetchSectionContent(name)
+            .then(({ extension, content }) => {
+                const html = extension === 'html' ? content : marked.parse(content);
                 target.innerHTML = html;
             }).then(() => {
                 // MathJax
