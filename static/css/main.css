@@ -109,21 +109,23 @@ section .main-body{
     }
 }
 
-#teachingmentoring .tm-grid {
+#teaching .tm-grid {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 1.5rem;
     margin-top: 0.8rem;
 }
 
-#teachingmentoring .tm-card {
-    background: #f3f3f3;
-    border-left: 4px solid #3f73d8;
+#teaching .tm-card {
+    background: #eaf3ff;
+    border: 1px solid #c8ddff;
+    border-left: 4px solid #4b82e3;
     border-radius: 0.5rem;
     padding: 1.2rem 1.4rem;
+    box-shadow: 0 4px 14px rgba(39, 86, 172, 0.08);
 }
 
-#teachingmentoring .tm-card-header {
+#teaching .tm-card-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -131,7 +133,7 @@ section .main-body{
     margin-bottom: 0.7rem;
 }
 
-#teachingmentoring .tm-course-code {
+#teaching .tm-course-code {
     margin: 0;
     font-size: 1.75rem;
     font-weight: 700;
@@ -139,18 +141,18 @@ section .main-body{
     line-height: 1.25;
 }
 
-#teachingmentoring .tm-role {
+#teaching .tm-role {
     font-size: 0.95rem;
     font-weight: 600;
-    color: #6f6f6f;
-    background: #e7e7e7;
+    color: #2f5fbe;
+    background: #dce9ff;
     border-radius: 999px;
     padding: 0.18rem 0.65rem;
     white-space: nowrap;
     line-height: 1.6;
 }
 
-#teachingmentoring .tm-course-name {
+#teaching .tm-course-name {
     margin: 0.2rem 0 0.4rem;
     font-size: 1.95rem;
     font-weight: 600;
@@ -158,35 +160,35 @@ section .main-body{
     color: #1a1a1a;
 }
 
-#teachingmentoring .tm-course-desc {
+#teaching .tm-course-desc {
     margin: 0;
     font-size: 1.3rem;
     line-height: 1.65;
     color: #303030;
 }
 
-#teachingmentoring .tm-term {
+#teaching .tm-term {
     display: inline-block;
     margin-top: 0.95rem;
     font-size: 1rem;
     font-weight: 600;
-    color: #2f5fbe;
-    background: #e4edff;
+    color: #2c59b4;
+    background: #d7e6ff;
     border-radius: 0.35rem;
     padding: 0.16rem 0.58rem;
     line-height: 1.6;
 }
 
 @media screen and (max-width: 991px) {
-    #teachingmentoring .tm-grid {
+    #teaching .tm-grid {
         grid-template-columns: 1fr;
     }
 
-    #teachingmentoring .tm-course-code {
+    #teaching .tm-course-code {
         font-size: 1.45rem;
     }
 
-    #teachingmentoring .tm-course-name {
+    #teaching .tm-course-name {
         font-size: 1.55rem;
     }
 }

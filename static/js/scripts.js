@@ -2,8 +2,10 @@
 
 const content_dir = 'contents/'
 const config_file = 'config.yml'
-const section_names = ['home', 'publications', 'researchexperience', 'awards', 'teachingmentoring']
+const section_names = ['home', 'publications', 'researchexperience', 'awards', 'teaching']
 const content_extensions = ['html', 'md']
+
+const OPEN_SOURCE_NOTICE = 'This site is open source. Improve this page.'
 
 
 function fetchSectionContent(name) {
@@ -28,6 +30,25 @@ function fetchSectionContent(name) {
     };
 
     return tryExtension(0);
+}
+
+
+function removeOpenSourceNotice(target) {
+    if (!target) {
+        return;
+    }
+
+    // Remove the common template notice if it exists as text in the section.
+    target.querySelectorAll('p, div, span, a, li').forEach((node) => {
+        const text = (node.textContent || '').trim();
+        if (text === OPEN_SOURCE_NOTICE) {
+            node.remove();
+        }
+    });
+
+    if ((target.textContent || '').includes(OPEN_SOURCE_NOTICE)) {
+        target.innerHTML = target.innerHTML.replaceAll(OPEN_SOURCE_NOTICE, '');
+    }
 }
 
 
@@ -85,6 +106,7 @@ window.addEventListener('DOMContentLoaded', event => {
             .then(({ extension, content }) => {
                 const html = extension === 'html' ? content : marked.parse(content);
                 target.innerHTML = html;
+                removeOpenSourceNotice(target);
             }).then(() => {
                 // MathJax
                 MathJax.typeset();

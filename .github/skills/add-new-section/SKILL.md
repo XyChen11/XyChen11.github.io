@@ -9,7 +9,13 @@ description: "Use when adding a new homepage section in this website, including 
 Add a new content section to this static academic site so it renders from Markdown automatically.
 
 ## Project Pattern
-This site loads section content from Markdown files in contents/ and injects HTML through static/js/scripts.js.
+This site loads section content files from contents/ and injects rendered HTML through static/js/scripts.js.
+
+The loader supports two content formats for each section name X:
+- Preferred for complex layouts: contents/X.html
+- Fallback for text-first sections: contents/X.md
+
+The loader tries X.html first, then falls back to X.md.
 
 Current loading list example:
 - home
@@ -18,7 +24,7 @@ Current loading list example:
 - awards
 
 For each section name X:
-- Markdown source file: contents/X.md
+- Content source file: contents/X.html or contents/X.md
 - Target container id: X-md
 - HTML section id: X
 - Nav anchor href: #X
@@ -26,11 +32,12 @@ For each section name X:
 ## Standard Steps
 1. Choose a section id
 - Use lowercase and no spaces.
-- Keep the same id in all files (HTML, JS, nav, Markdown filename).
+- Keep the same id in all files (HTML, JS, nav, and content filename).
 
-2. Create Markdown content file
-- Add contents/<section-id>.md.
-- Write section body in Markdown.
+2. Create content file
+- For text-first content, add contents/<section-id>.md.
+- For custom card layouts, timelines, or richer HTML structures, add contents/<section-id>.html.
+- Keep the filename exactly aligned with the section id.
 
 3. Add section block in index.html
 - Add a section with id=<section-id>.
@@ -63,10 +70,35 @@ Template:
 5. Register section in static/js/scripts.js
 - Add <section-id> to section_names array.
 - Keep missing-target guard so commented sections do not break loading.
+- The loader should try .html before .md so complex sections can use raw HTML safely.
 
 Template:
 ```javascript
 const section_names = ['home', 'publications', '<section-id>', 'awards'];
+const content_extensions = ['html', 'md'];
+
+function fetchSectionContent(name) {
+  const tryExtension = (index) => {
+    if (index >= content_extensions.length) {
+      throw new Error('Unable to load content for section: ' + name);
+    }
+
+    const extension = content_extensions[index];
+    return fetch(content_dir + name + '.' + extension).then((response) => {
+      if (!response.ok) {
+        if (response.status === 404) {
+          return tryExtension(index + 1);
+        }
+
+        throw new Error('Failed to load ' + name + '.' + extension + ': ' + response.status);
+      }
+
+      return response.text().then((content) => ({ extension, content }));
+    });
+  };
+
+  return tryExtension(0);
+}
 
 section_names.forEach((name) => {
   const target = document.getElementById(name + '-md');
@@ -74,10 +106,9 @@ section_names.forEach((name) => {
     return;
   }
 
-  fetch(content_dir + name + '.md')
-    .then((response) => response.text())
-    .then((markdown) => {
-      target.innerHTML = marked.parse(markdown);
+  fetchSectionContent(name)
+    .then(({ extension, content }) => {
+      target.innerHTML = extension === 'html' ? content : marked.parse(content);
     })
     .then(() => {
       MathJax.typeset();
@@ -90,7 +121,7 @@ section_names.forEach((name) => {
 - The new section exists in DOM: document.querySelector('#<section-id>-md') is not null.
 - The section container receives rendered HTML after load.
 - Clicking nav item scrolls to the section.
-- Browser console has no 404 for contents/<section-id>.md.
+- Browser console has no 404 for the expected content file.
 - Browser console has no id mismatch errors.
 
 ## Common Pitfalls
@@ -98,9 +129,10 @@ section_names.forEach((name) => {
 - Markdown filename and section id mismatch.
 - Section block commented out in HTML while still listed in JS.
 - Forgetting to add section id to section_names array.
+- Putting complex raw HTML into a .md file when it should be a .html file.
 
 ## Quick Add Recipe
-1. Add contents/<section-id>.md.
+1. Add contents/<section-id>.md for simple content, or contents/<section-id>.html for custom layouts.
 2. Add section block in index.html with id and <section-id>-md.
 3. Add nav link with href="#<section-id>".
 4. Add <section-id> to section_names in static/js/scripts.js.
