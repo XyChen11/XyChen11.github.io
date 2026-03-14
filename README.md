@@ -1,15 +1,4 @@
-
-
-![Github Forks](https://img.shields.io/github/forks/senli1073/academic-homepage-template?style=flat)
-![Github Stars](https://img.shields.io/github/stars/senli1073/academic-homepage-template?style=flat)
-![License](https://img.shields.io/github/license/senli1073/academic-homepage-template)
-![Last Commit](https://img.shields.io/github/last-commit/senli1073/academic-homepage-template)
-
-# A simple Github Pages template for personal academic websites.
-
-## Preview
-[![Screenshot of the Website](https://raw.githubusercontent.com/senli1073/academic-homepage-template/main/screenshot_full.png)](https://senli1073.github.io/)
-
+# A simple Github Pages template for personal academic websites.[![Screenshot of the Website](https://raw.githubusercontent.com/senli1073/academic-homepage-template/main/screenshot_full.png)](https://senli1073.github.io/)
 
 ## Introduction
 
@@ -19,20 +8,22 @@ The template is designed to integrate Markdown files as content input.  There's 
 
 This template supports LaTeX formula input. You can use `$...$` and `\(...\)` as delimiters for inline-math, or use `$$...$$` and `\[...\]` as delimiters for display-math. Macros such as `\ref{...}`, `\eqref{...}`, and `\begin{equation}...\end{equation}` are also supported. See [MathJax](https://docs.mathjax.org/en/latest/index.html) for more details.
 
-:milky_way: Demo: https://senli1073.github.io/
-
+🌌 Demo: https://senli1073.github.io/
 
 ## Getting Start
-### 1. Fork this repository
-The repository name should be `<username>.github.io`, which will also be your website's URL.
 
+### 1. Fork this repository
+
+The repository name should be `<username>.github.io`, which will also be your website's URL.
 
 ### 2. Edit page content
 
 (1) Go to the folder where you want to store your project, and clone the new repository:
+
 ```
 git clone https://github.com/<username>/<username>.github.io.git
 ```
+
 The directory structure is as follows:
 
 ```.
@@ -51,13 +42,15 @@ The directory structure is as follows:
 
 (4) Replace background image and photo with new ones for your web pages in `static/assets/img/`
 
-(5) Push it: 
+(5) Push it:
+
 ```
 git commit -am 'init'
 git push
 ```
 
 ### 3. Setup
+
 (1) Under your repository name, click `Settings`.
 
 (2) In the "Code and automation" section of the sidebar, click `Pages`.
@@ -69,7 +62,6 @@ git push
 Fire up a browser and go to `https://<username>.github.io`
 
 > Note that it can take up to 10 minutes for changes to your site to publish after you push the changes to GitHub.
-
 
 ## License
 

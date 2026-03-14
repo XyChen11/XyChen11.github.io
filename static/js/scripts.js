@@ -2,7 +2,7 @@
 
 const content_dir = 'contents/'
 const config_file = 'config.yml'
-const section_names = ['home', 'publications', 'awards']
+const section_names = ['home', 'publications', 'researchexperience', 'awards']
 
 
 window.addEventListener('DOMContentLoaded', event => {
@@ -49,12 +49,17 @@ window.addEventListener('DOMContentLoaded', event => {
 
     // Marked
     marked.use({ mangle: false, headerIds: false })
-    section_names.forEach((name, idx) => {
+    section_names.forEach((name) => {
+        const target = document.getElementById(name + '-md');
+        if (!target) {
+            return;
+        }
+
         fetch(content_dir + name + '.md')
             .then(response => response.text())
             .then(markdown => {
                 const html = marked.parse(markdown);
-                document.getElementById(name + '-md').innerHTML = html;
+                target.innerHTML = html;
             }).then(() => {
                 // MathJax
                 MathJax.typeset();
